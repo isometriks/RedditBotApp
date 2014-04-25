@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="isometriks_reddit_bot.feed_manager.class">Isometriks\Bundle\RedditBotBundle\Model\FeedManager</parameter>
+        <parameter key="isometriks_reddit_bot.feed_poster.class">Isometriks\Bundle\RedditBotBundle\Reddit\FeedPoster</parameter>
+        <parameter key="isometriks_reddit_bot.model.feed.class">Isometriks\Bundle\RedditBotBundle\Model\Feed</parameter>
+    </parameters>
+
+    <services>
+        <!-- Feed Manager -->
+        <service id="isometriks_reddit_bot.feed_manager" class="%isometriks_reddit_bot.feed_manager.class%">
+            <argument type="service" id="debril.reader" />
+
+            <!-- Populated by RedditBotExtension -->
+            <argument type="collection" />
+        </service>
+
+        <!-- Feed Poster -->
+        <service id="isometriks_reddit_bot.feed_poster" class="%isometriks_reddit_bot.feed_poster.class%">
+            <argument type="service" id="reddit" />
+        </service>
+    </services>
+</container>

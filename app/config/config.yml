@@ -1,0 +1,43 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+
+framework:
+    #esi:             ~
+    #translator:      { fallback: "%locale%" }
+    secret:          "%secret%"
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+        strict_requirements: ~
+    form:            ~
+    csrf_protection: ~
+    validation:      { enable_annotations: true }
+    default_locale:  "%locale%"
+    trusted_hosts:   ~
+    trusted_proxies: ~
+    session:
+        # handler_id set to null will use default session handler from php.ini
+        handler_id:  ~
+    fragments:       ~
+    http_method_override: true
+
+isometriks_reddit:
+    user: %bot_user%
+    password: %bot_password%
+
+isometriks_reddit_bot:
+    feeds:
+        symfony2_blog:
+            url: http://feeds.feedburner.com/symfony/blog
+            subreddit: symfony
+            flair:
+                - news
+            options:
+                link: publicId
+        symfony2_community:
+            url: http://feeds.feedburner.com/symfony/planet?format=xml
+            subreddit: symfony
+            flair:
+                - community
+            options:
+                link: publicId

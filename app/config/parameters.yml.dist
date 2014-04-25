@@ -1,0 +1,6 @@
+parameters:
+    locale:            en
+    secret:            ThisTokenIsNotSoSecretChangeIt
+
+    bot_user:          symfonybot
+    bot_password:      somepassword
