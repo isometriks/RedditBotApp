@@ -3,7 +3,7 @@
 
 Install with:
 
-    php composer.phar create-project isometriks/reddit-bot-app
+    php composer.phar create-project isometriks/reddit-bot-app -s dev
 
 Right now it's really only useful for RSS feeds, here's the configuration:
 
