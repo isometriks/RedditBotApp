@@ -1,6 +1,10 @@
 /r/symfony Bot
 =========
 
+Install with:
+
+    php composer.phar create-project isometriks/reddit-bot-app
+
 Right now it's really only useful for RSS feeds, here's the configuration:
 
 ```yaml
