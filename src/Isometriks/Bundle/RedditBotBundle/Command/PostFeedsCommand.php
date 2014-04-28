@@ -14,13 +14,17 @@ class PostFeedsCommand extends ContainerAwareCommand
         $this
             ->setName('reddit:bot:rss')
             ->setDescription('Post configured feeds to Reddit')
-            ->addArgument('dateOffset', InputArgument::IS_ARRAY, 'A string for \DateTime->modify(), eg "-1 days", "-1 hours" etc')
+            ->addArgument('dateOffset', InputArgument::IS_ARRAY, 'A string for \DateTime->modify(), eg "1 day ago", "1 hour ago" etc')
         ;
     }
 
     public function execute(InputInterface $input, OutputInterface $output)
     {
-        $offset = implode(' ', $input->getArgument('dateOffset'));
+        $offset = $input->getArgument('dateOffset');
+
+        if ($offset !== null) {
+            $offset = implode(' ', $offset);
+        }
 
         $feedManager = $this->getContainer()->get('isometriks_reddit_bot.feed_manager');
         $feedPoster = $this->getContainer()->get('isometriks_reddit_bot.feed_poster');
