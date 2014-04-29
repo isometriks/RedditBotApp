@@ -21,10 +21,7 @@ class PostFeedsCommand extends ContainerAwareCommand
     public function execute(InputInterface $input, OutputInterface $output)
     {
         $offset = $input->getArgument('dateOffset');
-
-        if ($offset !== null) {
-            $offset = implode(' ', $offset);
-        }
+        $offset = count($offset) > 0 ? $offset : null;
 
         $feedManager = $this->getContainer()->get('isometriks_reddit_bot.feed_manager');
         $feedPoster = $this->getContainer()->get('isometriks_reddit_bot.feed_poster');
